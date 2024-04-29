@@ -9,12 +9,6 @@ import java.util.Date;
 @Table(name="photo", schema="photo_album", uniqueConstraints = {@UniqueConstraint(columnNames = "photo_id")})
 
 public class Photo {
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="album_id")
-    private Album album;
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "photo_id", unique = true, nullable = false)
@@ -39,6 +33,8 @@ public class Photo {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="album_id")
     private Album album;
+
+    public Photo(){};
 
     public Long getPhotoId() {
         return photoId;
@@ -95,5 +91,6 @@ public class Photo {
     public void setAlbum(Album album) {
         this.album = album;
     }
+
 }
 
